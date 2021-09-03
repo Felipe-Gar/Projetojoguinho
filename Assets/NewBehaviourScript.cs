@@ -44,22 +44,23 @@ public class NewBehaviourScript : MonoBehaviour
            Vector2 forca = new Vector2 (0f,9f );
            rb.AddForce(forca,ForceMode2D.Impulse);
            tempoPulado = tempoPulo;   
-           anim.SetBool("estacorrendo" , true);    
+           anim.SetBool("estapulando" , true);    
         }
          tempoPulado -= Time.deltaTime;
 
-           if(this.transform.position.y < -14f)
-           {
-               transform.position = posicaoInicial;
-           }
-           if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-           {
-               anim.SetBool("estacorrendo", true);
-           }
-           else
-           {
-               anim.SetBool("estacorrendo" , false);
-           }
+        if(this.transform.position.y < -14f)
+        {
+            transform.position = posicaoInicial;
+        }
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        {
+            anim.SetBool("estacorrendo", true);
+        }
+        else
+        {
+            anim.SetBool("estacorrendo" , false);
+        }
+           
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -69,7 +70,9 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if(col.gameObject.tag =="chao")
         {
-            anim.SetBool("estacorrendo",false);
+            anim.SetBool("estapulando",false);
         }
     }
+    
 }
+
